@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive All India Summer Monsoon Rainfall departures from a user-selected long period average.">
+  <title>AISMR LPA Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header>
+      <p class="eyebrow">Indian summer monsoon</p>
+      <h1>AISMR LPA Explorer</h1>
+      <p class="intro">Choose a reference period to recalculate the Long Period Average and rainfall departures for every year.</p>
+    </header>
+
+    <section class="controls" aria-label="Long period average controls">
+      <div class="control-group">
+        <label for="start-year">LPA start year</label>
+        <select id="start-year"></select>
+      </div>
+      <div class="control-group">
+        <label for="end-year">LPA end year</label>
+        <select id="end-year"></select>
+      </div>
+      <button id="reset-period" type="button">Reset to 1971–2020</button>
+      <div class="metric" aria-live="polite">
+        <span>Selected-period LPA</span>
+        <strong id="lpa-value">—</strong>
+      </div>
+    </section>
+
+    <p id="period-error" class="error" role="alert" hidden></p>
+
+    <section class="chart-card">
+      <div class="chart-heading">
+        <div>
+          <h2>All India Summer Monsoon Rainfall Compared to Long Period Average (LPA)</h2>
+          <p>Colour intensity shows departure from the selected LPA; symbols show ENSO and IOD phase.</p>
+        </div>
+        <div class="downloads">
+          <button id="download-svg" type="button">Download SVG</button>
+          <button id="download-csv" type="button">Download CSV</button>
+        </div>
+      </div>
+      <div id="chart" class="chart" aria-label="AISMR percentage departure tile chart"></div>
+      <div class="legend" aria-label="Climate phase legend">
+        <span class="el-nino">▲ El Niño</span>
+        <span class="la-nina">▼ La Niña</span>
+        <span class="positive-iod">＋ Positive IOD</span>
+        <span class="negative-iod">− Negative IOD</span>
+      </div>
+      <p class="source">Data source: IMD gridded rainfall (1951–2023); supplied annual values (2024–2026). Historical AISMR uses a cosine-latitude area-weighted mean. Created by Ligin Joseph.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
